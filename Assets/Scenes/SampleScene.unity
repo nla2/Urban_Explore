@@ -558,6 +558,7 @@ GameObject:
   - component: {fileID: 2095623716}
   - component: {fileID: 2095623715}
   - component: {fileID: 2095623714}
+  - component: {fileID: 2095623719}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -687,6 +688,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2095623719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095623713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d74c8db3bac9b4696f121a5262615d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Movement
+  MovementSpeed: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
