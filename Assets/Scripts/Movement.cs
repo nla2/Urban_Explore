@@ -5,6 +5,7 @@ public class Movement : MonoBehaviour
 {
     public float MovementSpeed = 1;
     public float JumpHeight = 1;
+    public float RotationSpeed = 100;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -15,6 +16,7 @@ public class Movement : MonoBehaviour
     void Update()
     {
         Move();
+        Look();
     }
 
     void Move()
@@ -48,5 +50,10 @@ public class Movement : MonoBehaviour
             Debug.Log("i jumped");
             transform.Translate(Vector3.up * JumpHeight * Time.deltaTime);
         }
+    }
+    void Look()
+    {
+        float mouseX = Input.GetAxis("Mouse X");
+        transform.Rotate(Vector3.up * mouseX * RotationSpeed * Time.deltaTime);
     }
 }
