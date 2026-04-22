@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class Movement : MonoBehaviour
 {
     public float MovementSpeed = 1;
+    public float JumpHeight = 1;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -40,6 +41,12 @@ public class Movement : MonoBehaviour
         {
             Debug.Log("D key was pressed");
             transform.Translate(Vector3.right * MovementSpeed * Time.deltaTime);
+        }
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            Debug.Log("i jumped");
+            transform.Translate(Vector3.up * JumpHeight * Time.deltaTime);
         }
     }
 }
