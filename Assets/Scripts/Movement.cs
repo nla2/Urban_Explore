@@ -3,9 +3,10 @@ using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
-    public float MovementSpeed = 1;
+    public float MovementSpeed = 5;
     Vector2 moveInput;
-    public float JumpHeight = 1;
+    Vector2 lookInput;
+    public float JumpHeight = 5;
     public float RotationSpeed = 50;
     Rigidbody rb;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -22,9 +23,9 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // OnMove();
-        // Look();
+
     }
+    
 
     void FixedUpdate()
     {
@@ -37,9 +38,22 @@ public class Movement : MonoBehaviour
     }
     void OnLook(InputValue value)
     {
-        Vector2 lookInput = value.Get<Vector3>();
+        Vector2 lookInput = value.Get<Vector2>();
         float mouseX = lookInput.x;
         transform.Rotate(Vector3.up * mouseX * RotationSpeed * Time.deltaTime);
+          // void Look()
+    // {
+    //     float mouseX = Input.GetAxis("Mouse X");
+    //     transform.Rotate(Vector3.up * mouseX * RotationSpeed * Time.deltaTime);
+    // }
+    }
+    void OnJump(InputValue value)
+    {
+        if (value.isPressed)
+        {
+            Debug.Log("i jumped");
+            rb.AddForce(Vector3.up * JumpHeight * Time.deltaTime);
+        }
     }
 
     void moveLogic()
@@ -81,9 +95,5 @@ public class Movement : MonoBehaviour
     //     }
 
     
-    // void Look()
-    // {
-    //     float mouseX = Input.GetAxis("Mouse X");
-    //     transform.Rotate(Vector3.up * mouseX * RotationSpeed * Time.deltaTime);
-    // }
+  
 }
