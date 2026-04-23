@@ -6,7 +6,7 @@ public class Movement : MonoBehaviour
     public float MovementSpeed = 5;
     Vector2 moveInput;
     Vector2 lookInput;
-    public float JumpHeight = 5;
+    public float JumpHeight = 50;
     public float RotationSpeed = 50;
     Rigidbody rb;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -23,7 +23,7 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Jump();
     }
     
 
@@ -38,21 +38,21 @@ public class Movement : MonoBehaviour
     }
     void OnLook(InputValue value)
     {
-        Vector2 lookInput = value.Get<Vector2>();
-        float mouseX = lookInput.x;
-        transform.Rotate(Vector3.up * mouseX * RotationSpeed * Time.deltaTime);
+        // Vector2 lookInput = value.Get<Vector2>();
+        // float mouseX = lookInput.x;
+        // transform.Rotate(Vector3.up * mouseX * RotationSpeed * Time.deltaTime);
           // void Look()
     // {
-    //     float mouseX = Input.GetAxis("Mouse X");
-    //     transform.Rotate(Vector3.up * mouseX * RotationSpeed * Time.deltaTime);
+        float mouseX = Input.GetAxis("Mouse X");
+        transform.Rotate(Vector3.up * mouseX * RotationSpeed * Time.deltaTime);
     // }
     }
-    void OnJump(InputValue value)
+    void Jump()
     {
-        if (value.isPressed)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("i jumped");
-            rb.AddForce(Vector3.up * JumpHeight * Time.deltaTime);
+            transform.Translate(Vector3.up * JumpHeight * Time.fixedDeltaTime);
         }
     }
 
@@ -60,6 +60,9 @@ public class Movement : MonoBehaviour
     {
         Vector3 moveVector = new Vector3(moveInput.x, 0, moveInput.y) * MovementSpeed * Time.fixedDeltaTime;
         rb.MovePosition(rb.position + moveVector);
+        
+        // Vector3 jumpVector = new Vector3(0, moveInput.y, 0) * JumpHeight * Time.fixedDeltaTime;
+        // rb.MovePosition(rb.position + jumpVector);
     }
     
 
