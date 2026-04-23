@@ -1275,8 +1275,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33d74c8db3bac9b4696f121a5262615d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Movement
-  MovementSpeed: 5
-  JumpHeight: 50
+  MovementSpeed: 25
+  JumpHeight: 100
   RotationSpeed: 100
 --- !u!143 &2095623720
 CharacterController:

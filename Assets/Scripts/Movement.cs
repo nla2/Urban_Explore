@@ -5,6 +5,7 @@ public class Movement : MonoBehaviour
 {
     public float MovementSpeed = 5;
     Vector2 moveInput;
+    
     Vector2 lookInput;
     public float JumpHeight = 50;
     public float RotationSpeed = 50;
@@ -14,6 +15,7 @@ public class Movement : MonoBehaviour
     void Awake()
     {
       rb = GetComponent<Rigidbody>();
+      
     }
     void Start()
     {
@@ -60,6 +62,11 @@ public class Movement : MonoBehaviour
     {
         Vector3 moveVector = new Vector3(moveInput.x, 0, moveInput.y) * MovementSpeed * Time.fixedDeltaTime;
         rb.MovePosition(rb.position + moveVector);
+
+        float move = Input.GetAxis("Vertical");
+        float rotate = Input.GetAxis("Horizontal");
+        Vector3 movement = transform.forward * move * MovementSpeed * Time.deltaTime;
+        transform.Translate(movement, Space.World);
         
         // Vector3 jumpVector = new Vector3(0, moveInput.y, 0) * JumpHeight * Time.fixedDeltaTime;
         // rb.MovePosition(rb.position + jumpVector);
